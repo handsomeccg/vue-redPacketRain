@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>红包雨</title>
+
+      <script>
+          /**
+           * 移动web站设置html的fontSize
+           * 750宽度为100px rem = 效果图像像素(750 / 100);
+           */
+          function remChange () {
+              var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+              var widthProportion = function () {
+                  var doc = document.body || document.documentElement;
+                  var p = window.innerWidth || doc.clientWidth;
+                  p = p > 750 ? 750 : p;
+                  var fontSize = p / 750;
+                  document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + fontSize + 'px !important');
+                  return fontSize;
+              };
+              var changePage = function () {
+                  document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + widthProportion() + 'px !important');
+              };
+              changePage();
+              window.addEventListener(resizeEvt, changePage, false);
+          }
+          remChange()
+      </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
