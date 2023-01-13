@@ -35,7 +35,7 @@
       class="red-hint"
       :class="{ 'r-ani': isClickedRedPacket, 'd-none': !isActivity }"
     >
-      <div class="cheer-wrap" v-show="showHint">
+      <div class="cheer-wrap" :class="{ hidden: !showHint }">
         <div class="c-text">{{ cheerData[hintIndex]?.text }}</div>
       </div>
       <div class="r-num" :class="{ hidden: !isShowNum }"
